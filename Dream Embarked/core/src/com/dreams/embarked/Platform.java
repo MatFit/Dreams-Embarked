@@ -16,23 +16,20 @@ public class Platform extends ApplicationAdapter {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		img = new Texture("Color-blue.jpg");
+		img = new Texture("beta player.png");
 		player = Player.getInstance(1,"name", img);
-		camera = new OrthographicCamera();
+		camera = player.getCamera();
 	}
 
 	@Override
 	public void render () {
-		ScreenUtils.clear(1, 0, 0, 1);
+		ScreenUtils.clear(0, 1, 0, 1);
 
-		float cameraX = (Gdx.graphics.getWidth() - player.grabTexture().getWidth() / 2);
-		float cameraY = (Gdx.graphics.getHeight() - player.grabTexture().getHeight() / 2);
-		camera.position.set(cameraX, cameraY, 0);
-		camera.update();
+		player.update();
 
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
-		batch.draw(player.grabTexture(), player.grabPlayerX(), player.grabPlayerY());
+		batch.draw(player.getTexture(), player.getX(), player.getY(), player.getWidth(), player.getHeight());
 		batch.end();
 	}
 	

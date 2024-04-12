@@ -8,17 +8,21 @@ import java.awt.*;
 
 public class Player extends Entity {
     private static Player instance;
-    private float playerX;
-    private float playerY;
+    private float x;
+    private float y;
     private Texture playerTexture;
-
+    private OrthographicCamera camera;
+    private int width = 32;
+    private int height = 32;
 
     private Player(Integer health, String name, Texture texture){
         super(health,name);
 
         playerTexture = texture;
-        playerX = (Gdx.graphics.getWidth() - playerTexture.getWidth()) / 2;
-        playerY = (Gdx.graphics.getHeight() - playerTexture.getHeight()) / 2;
+        x = 0;
+        y = 0;
+        camera = new OrthographicCamera();
+        camera.setToOrtho(false, 640, 360);
     }
     public static synchronized Player getInstance(Integer health, String name, Texture texture){
         if (instance == null){
@@ -26,13 +30,20 @@ public class Player extends Entity {
         }
         return instance;
     }
-    public Texture grabTexture(){
+    public OrthographicCamera getCamera() {
+        return this.camera;
+    }
+    public void update() {
+        camera.position.set(this.x, this.y, 0);
+        camera.update();
+    }
+    public Texture getTexture(){
         return this.playerTexture;
     }
-    public float grabPlayerX(){
-        return this.playerX;
+    public float getX(){ return this.x; }
+    public float getY(){
+        return this.y;
     }
-    public float grabPlayerY(){
-        return this.playerY;
-    }
+    public float getWidth(){ return this.width; }
+    public float getHeight(){ return this.height; }
 }
