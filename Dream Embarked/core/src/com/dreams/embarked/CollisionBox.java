@@ -16,8 +16,4 @@ public class CollisionBox {
         this.tag = tag;
         this.owner = owner;
     }
-
-    public void Trigger() {
-
-    }
 }
