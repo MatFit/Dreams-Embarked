@@ -6,36 +6,37 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
+import java.util.Arrays;
 
 public class Platform extends ApplicationAdapter {
-	SpriteBatch batch;
-	Texture img;
+	Texture dirtTexture;
 	Player player;
-	OrthographicCamera camera;
+	World world;
 	
 	@Override
 	public void create () {
-		batch = new SpriteBatch();
-		img = new Texture("beta player.png");
-		player = Player.getInstance(1,"name", img);
-		camera = player.getCamera();
+		dirtTexture = new Texture("mud_tile.png");
+		boolean[][] dirt = new boolean[60][40];
+		Arrays.stream(dirt).forEach(a -> Arrays.fill(a, true));
+		World world = World.newBuilder()
+				.createTileMap(60, 40)
+				.createPlayer(360, 180)
+				.populateTiles(dirt, dirtTexture)
+				.build();
+		this.world = world;
 	}
 
 	@Override
 	public void render () {
-		ScreenUtils.clear(0, 1, 0, 1);
+		ScreenUtils.clear(0, 0, 0, 1);
 
-		player.update();
-
-		batch.setProjectionMatrix(camera.combined);
-		batch.begin();
-		batch.draw(player.getTexture(), player.getX(), player.getY(), player.getWidth(), player.getHeight());
-		batch.end();
+		world.update();
+		world.render();
 	}
 	
 	@Override
 	public void dispose () {
-		batch.dispose();
-		img.dispose();
+		dirtTexture.dispose();
+		world.dispose();
 	}
 }

@@ -1,7 +1,10 @@
 package com.dreams.embarked;
 
-public class Enemy extends Entity{
-    private Enemy(Integer health, String name){
-        super(health,name);
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
+
+public class Enemy extends Renderable {
+    private Enemy(Texture texture, int playerX, int playerY, int width, int height) {
+        super(texture, playerX, playerY, width, height);
     }
 }

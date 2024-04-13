@@ -6,44 +6,22 @@ import com.badlogic.gdx.graphics.Texture;
 
 import java.awt.*;
 
-public class Player extends Entity {
+public class Player extends Renderable {
     private static Player instance;
-    private float x;
-    private float y;
-    private Texture playerTexture;
-    private OrthographicCamera camera;
-    private int width = 32;
-    private int height = 32;
+    private int x;
+    private int y;
+    private Texture texture;
+    private int width;
+    private int height;
 
-    private Player(Integer health, String name, Texture texture){
-        super(health,name);
-
-        playerTexture = texture;
-        x = 0;
-        y = 0;
-        camera = new OrthographicCamera();
-        camera.setToOrtho(false, 640, 360);
+    private Player(Texture texture, int playerX, int playerY, int width, int height) {
+        super(texture, playerX, playerY, width, height);
     }
-    public static synchronized Player getInstance(Integer health, String name, Texture texture){
+    public static synchronized Player getInstance(Texture texture, int playerX, int playerY, int width, int height){
         if (instance == null){
-            instance = new Player(health, name, texture);
+            instance = new Player(texture, playerX, playerY, width, height);
         }
         return instance;
     }
-    public OrthographicCamera getCamera() {
-        return this.camera;
-    }
-    public void update() {
-        camera.position.set(this.x, this.y, 0);
-        camera.update();
-    }
-    public Texture getTexture(){
-        return this.playerTexture;
-    }
-    public float getX(){ return this.x; }
-    public float getY(){
-        return this.y;
-    }
-    public float getWidth(){ return this.width; }
-    public float getHeight(){ return this.height; }
+    public void update() {}
 }

@@ -9,6 +9,7 @@ public class DesktopLauncher {
     public static void main (String[] arg) {
         Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
         config.setForegroundFPS(60);
+        // Can upscale to 1920 x 1080 or 1280 x 720 with aspect ratio kept.
         config.setWindowedMode(640, 360);
         config.setTitle("Dreams Embarked");
         new Lwjgl3Application(new Platform(), config);
