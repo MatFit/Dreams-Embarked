@@ -1,4 +1,4 @@
-package main.java.embarked;
+package dreams.embarked;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -11,12 +11,14 @@ public class Player extends Renderable {
     private Player(Texture texture, int playerX, int playerY, int width, int height) {
         super(texture, playerX, playerY, width, height);
     }
-    public static synchronized Player getInstance(Texture texture, int playerX, int playerY, int width, int height){
-        if (instance == null){
+
+    public static synchronized Player getInstance(Texture texture, int playerX, int playerY, int width, int height) {
+        if (instance == null) {
             instance = new Player(texture, playerX, playerY, width, height);
         }
         return instance;
     }
+
     public void update() {
         boolean left = Gdx.input.isKeyPressed(Input.Keys.LEFT);
         boolean right = Gdx.input.isKeyPressed(Input.Keys.RIGHT);

@@ -1,4 +1,4 @@
-package main.java.embarked;
+package dreams.embarked;
 
 public class CollisionBox {
     private int x;

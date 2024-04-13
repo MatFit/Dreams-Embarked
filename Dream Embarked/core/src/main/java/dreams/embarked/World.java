@@ -1,4 +1,4 @@
-package main.java.embarked;
+package dreams.embarked;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -64,7 +64,7 @@ public class World {
         batch.end();
     }
 
-    public void dispose () {
+    public void dispose() {
         batch.dispose();
     }
 
@@ -102,8 +102,8 @@ public class World {
             for (int i = 0; i < mapWidth; i++) {
                 for (int j = 0; j < mapHeight; j++) {
                     if (baseMap[i][j]) {
-                        background[i][j] = new Tile(texture, textureWidth*i,
-                                textureHeight*(mapHeight-(j+1)), textureWidth, textureHeight);
+                        background[i][j] = new Tile(texture, textureWidth * i,
+                                textureHeight * (mapHeight - (j + 1)), textureWidth, textureHeight);
                     }
                 }
             }
@@ -113,7 +113,7 @@ public class World {
         public Builder populateTilesFromMatrix(Texture[][] baseMap) {
             for (int i = 0; i < mapWidth; i++) {
                 for (int j = 0; j < mapHeight; j++) {
-                    background[i][j] = new Tile(baseMap[i][j], textureWidth*i,textureHeight*(mapHeight-(j+1)),
+                    background[i][j] = new Tile(baseMap[i][j], textureWidth * i, textureHeight * (mapHeight - (j + 1)),
                             textureWidth, textureHeight);
                 }
             }

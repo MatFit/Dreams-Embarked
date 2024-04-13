@@ -1,4 +1,4 @@
-package main.java.embarked;
+package dreams.embarked;
 
 import com.badlogic.gdx.graphics.Texture;
 
@@ -17,15 +17,31 @@ public class Renderable {
         this.height = height;
     }
 
-    public Texture getTexture(){
+    public Texture getTexture() {
         return this.texture;
     }
-    public int getX(){ return this.x; }
-    public int getY(){
+
+    public int getX() {
+        return this.x;
+    }
+
+    public int getY() {
         return this.y;
     }
-    public int getWidth(){ return this.width; }
-    public float getHeight(){ return this.height; }
-    public void moveX(int change) { this.x += change; }
-    public void moveY(int change) { this.y += change; }
+
+    public int getWidth() {
+        return this.width;
+    }
+
+    public float getHeight() {
+        return this.height;
+    }
+
+    public void moveX(int change) {
+        this.x += change;
+    }
+
+    public void moveY(int change) {
+        this.y += change;
+    }
 }

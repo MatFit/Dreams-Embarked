@@ -1,4 +1,4 @@
-package main.java.embarked;
+package dreams.embarked;
 
 import com.badlogic.gdx.graphics.Texture;
 
