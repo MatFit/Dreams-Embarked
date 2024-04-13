@@ -1,14 +1,10 @@
-package com.dreams.embarked;
+package main.java.embarked;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.dreams.embarked.Enemy;
-import com.dreams.embarked.Player;
 
-import java.util.Arrays;
 import java.util.LinkedList;
-import java.util.Random;
 
 public class World {
     SpriteBatch batch;

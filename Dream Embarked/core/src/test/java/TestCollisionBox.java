@@ -1,4 +1,6 @@
-import com.dreams.embarked.CollisionBox;
+package test.java;
+
+import main.java.embarked.CollisionBox;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

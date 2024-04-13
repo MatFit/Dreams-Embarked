@@ -3,7 +3,7 @@ package com.dreams.embarked.client;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.gwt.GwtApplication;
 import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration;
-import com.dreams.embarked.Platform;
+import main.java.embarked.Platform;
 
 public class HtmlLauncher extends GwtApplication {
 

@@ -1,11 +1,8 @@
-package com.dreams.embarked;
+package main.java.embarked;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-
-import java.awt.*;
 
 public class Player extends Renderable {
     private static Player instance;

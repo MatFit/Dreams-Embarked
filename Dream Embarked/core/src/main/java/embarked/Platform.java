@@ -1,12 +1,8 @@
-package com.dreams.embarked;
+package main.java.embarked;
 
 import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
-import java.util.Arrays;
 
 public class Platform extends ApplicationAdapter {
 	Texture grass;
