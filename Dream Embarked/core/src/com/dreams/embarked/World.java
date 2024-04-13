@@ -21,9 +21,8 @@ public class World {
     private int mapWidth;
     private int mapHeight;
 
-    // TODO: Put in Builder
-    private int screenWidth = 640;
-    private int screenHeight = 360;
+    public static int screenWidth = 640;
+    public static int screenHeight = 360;
 
     public World(Builder worldBuilder) {
         this.player = worldBuilder.player;
@@ -44,71 +43,19 @@ public class World {
         player.update();
     }
 
-    private int[] drawPosition(int actualX, int actualY) {
-        int[] ret = new int[2];
-        int newX;
-        int newY;
-        if (actualX < camera.position.x) {
-            newX = (int) (screenWidth/2 - (camera.position.x - actualX));
-        } else {
-            newX = (int) (screenWidth/2 + (actualX - camera.position.x));
-        }
-        if (actualY < camera.position.y) {
-            newY = (int) (screenHeight/2 - (camera.position.y - actualY));
-        } else {
-            newY = (int) (screenHeight/2 + (actualY - camera.position.y));
-        }
-
-        ret[0] = newX;
-        ret[1] = newY;
-        return ret;
-    }
 
     public void render() {
-        // Calculate section of world to render
-        int playerX = player.getX();
-        int playerY = player.getY();
-
-        int minX = (playerX - screenWidth/2)/textureWidth - 1;
-        int maxX = (playerX + screenWidth/2)/textureWidth + 1;
-
-        int minY = (playerY - screenHeight/2)/textureHeight - 1;
-        int maxY = (playerY + screenHeight/2)/textureHeight + 1;
-
-        if (minX < 0) {
-            minX = 0;
-        } else if (maxX >= mapWidth) {
-            maxX = mapWidth-1;
-        }
-
-        if (minY < 0) {
-            minY = 0;
-        } else if (maxY >= mapHeight) {
-            maxY = mapHeight;
-        }
-
-        // Move camera
-        camera.position.set(playerX, playerY, 0);
-
-//        if (minX > 0 && maxX < mapWidth) {
-//            camera.position.x = playerX;
-//        }
-//        if (minY > 0 && maxY < mapHeight) {
-//            camera.position.y = playerY;
-//        }
         camera.update();
-        System.out.println(camera.position);
 
         // Setup batch
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
 
         // Background Tiles
-        for (int i = minX; i < maxX; i++) {
-            for (int j = mapHeight-minY-1; j >= mapHeight-maxY; j--) {
+        for (int i = 0; i < mapWidth; i++) {
+            for (int j = 0; j < mapHeight; j++) {
                 Tile tile = background[i][j];
-                int[] drawnPositions = drawPosition(tile.getX(), tile.getY());
-                batch.draw(tile.getTexture(), drawnPositions[0], drawnPositions[1], tile.getWidth(), tile.getHeight());
+                batch.draw(tile.getTexture(), tile.getX(), tile.getY(), tile.getWidth(), tile.getHeight());
             }
         }
         // Enemies
@@ -116,8 +63,7 @@ public class World {
         // Items
 
         // Player
-        int[] playerDrawnPositions = drawPosition(player.getX(), player.getY());
-        batch.draw(player.getTexture(), playerDrawnPositions[0], playerDrawnPositions[1], player.getWidth(), player.getHeight());
+        batch.draw(player.getTexture(), player.getX(), player.getY(), player.getWidth(), player.getHeight());
 
         batch.end();
     }
@@ -163,6 +109,16 @@ public class World {
                         background[i][j] = new Tile(texture, textureWidth*i,
                                 textureHeight*(mapHeight-(j+1)), textureWidth, textureHeight);
                     }
+                }
+            }
+            return this;
+        }
+
+        public Builder populateTilesFromMatrix(Texture[][] baseMap) {
+            for (int i = 0; i < mapWidth; i++) {
+                for (int j = 0; j < mapHeight; j++) {
+                    background[i][j] = new Tile(baseMap[i][j], textureWidth*i,textureHeight*(mapHeight-(j+1)),
+                            textureWidth, textureHeight);
                 }
             }
             return this;

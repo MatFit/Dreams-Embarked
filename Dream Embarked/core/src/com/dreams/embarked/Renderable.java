@@ -26,4 +26,6 @@ public class Renderable {
     }
     public int getWidth(){ return this.width; }
     public float getHeight(){ return this.height; }
+    public void moveX(int change) { this.x += change; }
+    public void moveY(int change) { this.y += change; }
 }

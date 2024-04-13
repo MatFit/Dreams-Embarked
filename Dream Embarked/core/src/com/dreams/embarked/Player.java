@@ -1,6 +1,7 @@
 package com.dreams.embarked;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 
@@ -8,11 +9,7 @@ import java.awt.*;
 
 public class Player extends Renderable {
     private static Player instance;
-    private int x;
-    private int y;
-    private Texture texture;
-    private int width;
-    private int height;
+    private int moveSpeed = 2;
 
     private Player(Texture texture, int playerX, int playerY, int width, int height) {
         super(texture, playerX, playerY, width, height);
@@ -23,5 +20,28 @@ public class Player extends Renderable {
         }
         return instance;
     }
-    public void update() {}
+    public void update() {
+        boolean left = Gdx.input.isKeyPressed(Input.Keys.LEFT);
+        boolean right = Gdx.input.isKeyPressed(Input.Keys.RIGHT);
+        boolean up = Gdx.input.isKeyPressed(Input.Keys.UP);
+        boolean down = Gdx.input.isKeyPressed(Input.Keys.DOWN);
+
+        int xSpeed = 0;
+        int ySpeed = 0;
+
+        if (right && this.getX() < World.screenWidth - this.getWidth()) {
+            xSpeed = moveSpeed;
+        } else if (left && this.getX() > 0) {
+            xSpeed = -moveSpeed;
+        }
+
+        if (up && this.getY() < World.screenHeight - this.getHeight()) {
+            ySpeed = moveSpeed;
+        } else if (down && this.getY() > 0) {
+            ySpeed = -moveSpeed;
+        }
+
+        this.moveX(xSpeed);
+        this.moveY(ySpeed);
+    }
 }
