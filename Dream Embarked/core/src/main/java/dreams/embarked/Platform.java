@@ -5,17 +5,17 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 public class Platform extends ApplicationAdapter {
-    Texture grass;
-    Texture dirt;
-    Texture stone;
+    IdentifiableTexture grass;
+    IdentifiableTexture dirt;
+    IdentifiableTexture stone;
     Player player;
     World world;
 
     @Override
     public void create() {
-        grass = new Texture("grass_tile.png");
-        dirt = new Texture("mud_tile.png");
-        stone = new Texture("stone_tile.png");
+        grass = new IdentifiableTexture(TextureType.Grass,"grass_tile.png");
+        dirt = new IdentifiableTexture(TextureType.Dirt,"mud_tile.png");
+        stone = new IdentifiableTexture(TextureType.Stone,"stone_tile.png");
 
         Texture[][] backgroundMatrix = {
                 {stone, stone, stone, stone, stone, stone, stone, stone, stone, stone, stone, stone, stone},
