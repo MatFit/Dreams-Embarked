@@ -17,7 +17,7 @@ public class Platform extends ApplicationAdapter {
         dirt = new IdentifiableTexture(TextureType.Dirt,"mud_tile.png");
         stone = new IdentifiableTexture(TextureType.Stone,"stone_tile.png");
 
-        Texture[][] backgroundMatrix = {
+        IdentifiableTexture[][] backgroundMatrix = {
                 {stone, stone, stone, stone, stone, stone, stone, stone, stone, stone, stone, stone, stone},
                 {stone, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, stone, stone},
                 {stone, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, stone, stone},
@@ -39,6 +39,7 @@ public class Platform extends ApplicationAdapter {
                 {stone, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, stone, stone},
                 {stone, stone, stone, stone, stone, stone, stone, stone, stone, stone, stone, stone, stone},
         };
+
         World world = World.newBuilder()
                 .createTileMap(20, 12)
                 .createPlayer(320 - 16, 100)
