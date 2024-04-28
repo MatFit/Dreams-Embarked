@@ -1,6 +1,5 @@
 package test.java;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import dreams.embarked.InputMock;
 import org.junit.jupiter.api.Test;
