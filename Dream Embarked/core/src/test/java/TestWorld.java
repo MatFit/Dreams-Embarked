@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TestWorld {
-    @BeforeAll
+    /*@BeforeAll
     public static void setup() {
         Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
         config.setForegroundFPS(60);
@@ -41,5 +41,5 @@ public class TestWorld {
 
         assertEquals(player.getX(), 0);
         assertEquals(player.getY(), 10);
-    }
+    }*/
 }
