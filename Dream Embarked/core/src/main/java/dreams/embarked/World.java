@@ -29,6 +29,7 @@ public class World {
         this.mapWidth = worldBuilder.mapWidth;
         this.mapHeight = worldBuilder.mapHeight;
 
+
         this.batch = new SpriteBatch();
 
         this.camera = new OrthographicCamera();
@@ -68,6 +69,8 @@ public class World {
         batch.dispose();
     }
 
+    public Tile getBackgroundTile(int tileX,int tileY){ return background[tileX][tileY]; }
+
     public static Builder newBuilder() {
         return new Builder();
     }
@@ -86,7 +89,7 @@ public class World {
         }
 
         public Builder createPlayer(int x, int y) {
-            Texture img = new Texture("beta player.png");
+            IdentifiableTexture img = new IdentifiableTexture(TextureType.Player,"beta player.png");
             player = Player.getInstance(img, x, y, 32, 32);
             return this;
         }
@@ -98,22 +101,10 @@ public class World {
             return this;
         }
 
-        public Builder populateTiles(boolean[][] baseMap, Texture texture) {
+        public Builder populateTilesFromMatrix(IdentifiableTexture[][] baseMap) {
             for (int i = 0; i < mapWidth; i++) {
                 for (int j = 0; j < mapHeight; j++) {
-                    if (baseMap[i][j]) {
-                        background[i][j] = new Tile(texture, textureWidth * i,
-                                textureHeight * (mapHeight - (j + 1)), textureWidth, textureHeight);
-                    }
-                }
-            }
-            return this;
-        }
-
-        public Builder populateTilesFromMatrix(Texture[][] baseMap) {
-            for (int i = 0; i < mapWidth; i++) {
-                for (int j = 0; j < mapHeight; j++) {
-                    background[i][j] = new Tile(baseMap[i][j], textureWidth * i, textureHeight * (mapHeight - (j + 1)),
+                    background[i][j] = new Tile(baseMap[i][j], baseMap[i][j].getTextureType(), textureWidth * i, textureHeight * (mapHeight - (j + 1)),
                             textureWidth, textureHeight);
                 }
             }

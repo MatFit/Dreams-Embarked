@@ -15,12 +15,12 @@ public class Player extends Renderable {
     private Rectangle playerRectangle;
 
 
-    private Player(Texture texture, int playerX, int playerY, int width, int height) {
+    private Player(IdentifiableTexture texture, int playerX, int playerY, int width, int height) {
         super(texture, playerX, playerY, width, height);
         playerRectangle = new Rectangle(playerX, playerY, width, height); // Create player's rectangle
     }
 
-    public static synchronized Player getInstance(Texture texture, int playerX, int playerY, int width, int height) {
+    public static synchronized Player getInstance(IdentifiableTexture texture, int playerX, int playerY, int width, int height) {
         if (instance == null) {
             instance = new Player(texture, playerX, playerY, width, height);
         }
