@@ -38,6 +38,7 @@ public class World {
 
     public void update() {
         player.update();
+        printCurrentTile();
     }
 
 
@@ -70,6 +71,15 @@ public class World {
     }
 
     public Tile getBackgroundTile(int tileX,int tileY){ return background[tileX][tileY]; }
+    public void printCurrentTile() {
+        // Get player position
+        int playerX = player.getX();
+        int playerY = player.getY();
+
+        int tileX = playerX / textureHeight;
+        int tileY = playerY / textureWidth;
+
+    }
 
     public static Builder newBuilder() {
         return new Builder();
