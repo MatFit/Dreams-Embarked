@@ -37,7 +37,6 @@ public class Renderable {
     public int getWidth() {
         return this.width;
     }
-
     public float getHeight() {
         return this.height;
     }
