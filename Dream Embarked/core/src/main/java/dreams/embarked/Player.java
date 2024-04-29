@@ -12,7 +12,9 @@ public class Player extends Renderable {
     private int moveSpeed = 2;
     private int prevX;
     private int prevY;
-    private Rectangle playerRectangle;
+    private HitBox playerHitBox;
+    private HurtBox playerHurtBox;
+    private int playerHealth = 3;
     private boolean attacking = false;
     private int attackTime = 30;
     private int attackCounter = 0;
@@ -22,7 +24,6 @@ public class Player extends Renderable {
     private Player(IdentifiableTexture texture, int playerX, int playerY, int width, int height) {
         super(texture, playerX, playerY, width, height);
         defaultTexture = texture;
-        playerRectangle = new Rectangle(playerX, playerY, width, height); // Create player's rectangle
     }
 
     public static synchronized Player getInstance(IdentifiableTexture texture, int playerX, int playerY, int width, int height) {
@@ -74,5 +75,8 @@ public class Player extends Renderable {
 
         this.moveX(xSpeed);
         this.moveY(ySpeed);
+    }
+    public void hasBeenDamaged(){
+        playerHealth--;
     }
 }

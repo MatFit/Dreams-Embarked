@@ -10,8 +10,6 @@ public class Renderable {
     private int y;
     private int width;
     private int height;
-    private Rectangle rectangle;
-
 
     public Renderable(IdentifiableTexture texture, int x, int y, int width, int height) {
         this.texture = texture;
@@ -19,7 +17,6 @@ public class Renderable {
         this.y = y;
         this.width = width;
         this.height = height;
-        this.rectangle = new Rectangle(x,y,height,width);
     }
 
     public IdentifiableTexture getTexture() {
