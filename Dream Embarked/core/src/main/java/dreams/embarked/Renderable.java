@@ -47,4 +47,8 @@ public class Renderable {
     public void moveY(int change) {
         this.y += change;
     }
+
+    public void setTexture(IdentifiableTexture texture) {
+        this.texture = texture;
+    }
 }
