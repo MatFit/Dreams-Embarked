@@ -31,6 +31,9 @@ public class Player extends Renderable {
         }
         return instance;
     }
+    public static synchronized Player getInstance(){
+        return instance;
+    }
 
     public void update() {
         boolean left = Gdx.input.isKeyPressed(Input.Keys.LEFT);
@@ -74,5 +77,8 @@ public class Player extends Renderable {
 
         this.moveX(xSpeed);
         this.moveY(ySpeed);
+    }
+    public void hasBeenDamaged(){
+        // player health reduced here
     }
 }

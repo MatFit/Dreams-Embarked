@@ -1,5 +1,7 @@
 package dreams.embarked;
 
+
+import java.awt.*;
 import com.badlogic.gdx.math.Rectangle;
 
 public class CollisionBox extends Rectangle {
@@ -18,5 +20,6 @@ public class CollisionBox extends Rectangle {
         this.tag = tag;
         this.owner = owner;
     }
-    public String getTag(){ return this.tag; }
+    public Renderable getOwner(){ return this.owner; }
+
 }
