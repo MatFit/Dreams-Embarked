@@ -21,5 +21,4 @@ public class CollisionBox extends Rectangle {
         this.owner = owner;
     }
     public Renderable getOwner(){ return this.owner; }
-
 }

@@ -5,9 +5,12 @@ public class HurtBox extends CollisionBox {
         super(x, y, width, height, "hurtbox", owner);
     }
     public void hasBeenHit(){
-        if (this.getOwner().getTexture().getTextureType() == TextureType.Player){
-            Player player = Player.getInstance();
-            player.hasBeenDamaged();
+        if (this.getOwner() instanceof Player){
+            ((Player) this.getOwner()).hasBeenDamaged();
         }
+        else if (this.getOwner() instanceof Enemy){
+            ((Enemy) this.getOwner()).hasBeenDamaged();
+        }
+
     }
 }
