@@ -14,6 +14,7 @@ public class Player extends Renderable {
     private int prevY;
     private HitBox playerHitBox;
     private HurtBox playerHurtBox;
+    private int playerHealth = 3;
     private boolean attacking = false;
     private int attackTime = 30;
     private int attackCounter = 0;
@@ -73,10 +74,9 @@ public class Player extends Renderable {
         }
 
         this.moveX(xSpeed);
-
         this.moveY(ySpeed);
     }
     public void hasBeenDamaged(){
-        // player health reduced here
+        playerHealth--;
     }
 }

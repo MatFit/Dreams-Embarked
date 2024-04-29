@@ -11,6 +11,5 @@ public class HurtBox extends CollisionBox {
         else if (this.getOwner() instanceof Enemy){
             ((Enemy) this.getOwner()).hasBeenDamaged();
         }
-
     }
 }
