@@ -31,4 +31,6 @@ public class CollisionObserver {
             }
         }
     }
+    public int getHitBoxesSize(){ return this.hitBoxes.size(); }
+    public int getHurtBoxesSize(){ return this.hurtBoxes.size(); }
 }
