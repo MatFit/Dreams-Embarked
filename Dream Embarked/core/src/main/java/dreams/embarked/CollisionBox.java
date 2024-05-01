@@ -1,7 +1,4 @@
 package dreams.embarked;
-
-
-import java.awt.*;
 import com.badlogic.gdx.math.Rectangle;
 
 public class CollisionBox extends Rectangle {
@@ -13,10 +10,7 @@ public class CollisionBox extends Rectangle {
     private Renderable owner;
 
     public CollisionBox(int x, int y, int width, int height, String tag, Renderable owner) {
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
+        super(x,y,width,height);
         this.tag = tag;
         this.owner = owner;
     }

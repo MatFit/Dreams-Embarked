@@ -14,11 +14,23 @@ public class TestCollisionObserver {
     public void testAddHitBoxAndAddHurtBox(){
         BoxFactory boxFactory = new BoxFactory();
         CollisionObserver collisionObserver = CollisionObserver.getInstance();
+        collisionObserver.clearHitBox();
+        collisionObserver.clearHurtBox();
 
-        HitBox hitBox = (HitBox) boxFactory.createBox("hitbox", null, 0,0,0,0);
-        HurtBox hurtBox = (HurtBox) boxFactory.createBox("hurtbox", null, 0,0,0,0);
+        HitBox hitBox = (HitBox) boxFactory.createBox("hitbox", null, 1,1,1,1);
+        HurtBox hurtBox = (HurtBox) boxFactory.createBox("hurtbox", null, 1,1,1,1);
 
-        assertTrue(collisionObserver.getHitBoxesSize()==1);
-        assertTrue(collisionObserver.getHurtBoxesSize()==1);
+        assertEquals(1, collisionObserver.getHitBoxesSize());
+        assertEquals(1, collisionObserver.getHurtBoxesSize());
     }
+    @Test
+    public void testDetectCollisions(){
+        BoxFactory boxFactory = new BoxFactory();
+        CollisionObserver collisionObserver = CollisionObserver.getInstance();
+
+
+        collisionObserver.detectCollisions();
+        assertTrue(collisionObserver.getHasCollided());
+    }
+
 }
