@@ -27,6 +27,11 @@ public class TestCollisionObserver {
     public void testDetectCollisions(){
         BoxFactory boxFactory = new BoxFactory();
         CollisionObserver collisionObserver = CollisionObserver.getInstance();
+        collisionObserver.clearHitBox();
+        collisionObserver.clearHurtBox();
+
+        HitBox hitBox = (HitBox) boxFactory.createBox("hitbox", null, 1,1,2,2);
+        HurtBox hurtBox = (HurtBox) boxFactory.createBox("hurtbox", null, 2,2,1,1);
 
 
         collisionObserver.detectCollisions();

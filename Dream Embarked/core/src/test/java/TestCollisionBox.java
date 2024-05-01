@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TestCollisionBox {
     @Test
     public void testCreation() {
-        CollisionBox box = new CollisionBox(0, 0, 0, 0, "tag", null);
+        CollisionBox box = new CollisionBox(0, 0, 0, 0, null);
         assertNotNull(box);
     }
 }

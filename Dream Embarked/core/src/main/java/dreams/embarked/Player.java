@@ -24,6 +24,7 @@ public class Player extends Renderable {
     private Player(IdentifiableTexture texture, int playerX, int playerY, int width, int height) {
         super(texture, playerX, playerY, width, height);
         defaultTexture = texture;
+        playerHurtBox = (HurtBox) BoxFactory.createBox("hurtbox", this, playerX, playerY, width, height);
     }
 
     public static synchronized Player getInstance(IdentifiableTexture texture, int playerX, int playerY, int width, int height) {
@@ -72,11 +73,12 @@ public class Player extends Renderable {
                 this.setTexture(defaultTexture);
             }
         }
-
         this.moveX(xSpeed);
         this.moveY(ySpeed);
+        playerHurtBox.setPosition(this.getX(), this.getY());
     }
     public void hasBeenDamaged(){
         playerHealth--;
+        System.out.println("amongusly");
     }
 }

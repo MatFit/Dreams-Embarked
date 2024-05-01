@@ -1,8 +1,8 @@
 package dreams.embarked;
 
 public class HurtBox extends CollisionBox {
-    public HurtBox(int x, int y, int width, int height, Renderable owner) {
-        super(x, y, width, height, "hurtbox", owner);
+    public HurtBox(float x, float y, float width, float height, Renderable owner) {
+        super(x, y, width, height, owner);
     }
     public void hasBeenHit(){
         if (this.getOwner() instanceof Player){

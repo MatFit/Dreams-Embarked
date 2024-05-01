@@ -11,6 +11,7 @@ public class World {
     private Player player;
     private OrthographicCamera camera;
     private LinkedList<Enemy> enemies = new LinkedList<>();
+    private CollisionObserver collisionObserver = CollisionObserver.getInstance();
     private Tile[][] background;
     private int textureWidth;
     private int textureHeight;
@@ -34,10 +35,13 @@ public class World {
 
         this.camera = new OrthographicCamera();
         this.camera.setToOrtho(false, 640, 360);
+
+        BoxFactory.createBox("hitbox", null, 320 - 60, 100, 20, 20);
     }
 
     public void update() {
         player.update();
+        collisionObserver.detectCollisions();
         printCurrentTile();
     }
 

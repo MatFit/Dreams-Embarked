@@ -2,17 +2,15 @@ package dreams.embarked;
 import com.badlogic.gdx.math.Rectangle;
 
 public class CollisionBox extends Rectangle {
-    private int x;
-    private int y;
-    private int width;
-    private int height;
-    private String tag;
     private Renderable owner;
 
-    public CollisionBox(int x, int y, int width, int height, String tag, Renderable owner) {
+    public CollisionBox(float x, float y, float width, float height, Renderable owner) {
         super(x,y,width,height);
-        this.tag = tag;
         this.owner = owner;
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
     }
     public Renderable getOwner(){ return this.owner; }
 }
