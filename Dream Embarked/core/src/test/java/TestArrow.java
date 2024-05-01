@@ -10,7 +10,7 @@ public class TestArrow {
     @Test
     public void testCreation() {
         CollisionObserver.getInstance().clearHitBox();
-        Arrow arrow = new Arrow(null, 0, 0, 0);
+        Arrow arrow = new Arrow(null, 0, 0, 0, null);
 
         assertNotNull(arrow);
         assertEquals(1, CollisionObserver.getInstance().getHitBoxesSize());
@@ -18,7 +18,7 @@ public class TestArrow {
 
     @Test
     public void testArrowUpdate() {
-        Arrow arrow = new Arrow(null, 0, 0, 1);
+        Arrow arrow = new Arrow(null, 0, 0, 1, null);
 
         arrow.update();
 
