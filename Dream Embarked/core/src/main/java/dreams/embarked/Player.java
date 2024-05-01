@@ -16,6 +16,9 @@ public class Player extends Renderable {
     private HurtBox playerHurtBox;
     private int playerHealth = 3;
     private boolean attacking = false;
+    private boolean invincible = false;
+    private int invincibleTime = 30;
+    private int invincibleCounter = 0;
     private int attackTime = 30;
     private int attackCounter = 0;
     private IdentifiableTexture defaultTexture;
@@ -32,6 +35,10 @@ public class Player extends Renderable {
             instance = new Player(texture, playerX, playerY, width, height);
         }
         return instance;
+    }
+
+    public static synchronized void resetPlayer() {
+        instance = null;
     }
 
     public void update() {
@@ -73,12 +80,28 @@ public class Player extends Renderable {
                 this.setTexture(defaultTexture);
             }
         }
+
+        if (this.invincible) {
+            this.invincibleCounter += 1;
+            if (this.invincibleCounter == this.invincibleTime) {
+                this.invincible = false;
+            }
+        }
+
         this.moveX(xSpeed);
         this.moveY(ySpeed);
         playerHurtBox.setPosition(this.getX(), this.getY());
+        System.out.println(this.playerHealth);
     }
     public void hasBeenDamaged(){
-        playerHealth--;
-        System.out.println("amongusly");
+        if (!invincible) {
+            playerHealth--;
+            invincible = true;
+            invincibleCounter = 0;
+        }
+    }
+
+    public boolean isDead() {
+        return playerHealth <= 0;
     }
 }

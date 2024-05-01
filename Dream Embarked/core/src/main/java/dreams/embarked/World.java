@@ -1,5 +1,6 @@
 package dreams.embarked;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -43,6 +44,10 @@ public class World {
         player.update();
         collisionObserver.detectCollisions();
         printCurrentTile();
+
+        if (player.isDead()){
+            Gdx.app.exit();
+        }
     }
 
 
