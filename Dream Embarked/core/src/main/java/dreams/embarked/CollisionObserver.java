@@ -22,6 +22,13 @@ public class CollisionObserver {
     public void addHurtBox(HurtBox hurtBox) {
         hurtBoxes.add(hurtBox);
     }
+    public void clearHitBox(){
+        hitBoxes.clear();
+    }
+    public void clearHurtBox(){
+        hurtBoxes.clear();
+    }
+
 
     public void detectCollisions() {
         for (HitBox hitBox : hitBoxes) {
