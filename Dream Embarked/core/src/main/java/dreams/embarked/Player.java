@@ -115,4 +115,8 @@ public class Player extends Renderable {
     public boolean isDead() {
         return this.health <= 0;
     }
+
+    public int getHealth() {
+        return this.health;
+    }
 }

@@ -81,7 +81,10 @@ public class World {
 
         // Player
         batch.draw(player.getTexture(), player.getX(), player.getY(), player.getWidth(), player.getHeight());
-
+        IdentifiableTexture healthTexture = new IdentifiableTexture(TextureType.Player, "heart.png");
+        for (int i = 0; i < player.getHealth(); i++) {
+            batch.draw(healthTexture, 40+i*40, 40, 32, 32);
+        }
         batch.end();
     }
 
