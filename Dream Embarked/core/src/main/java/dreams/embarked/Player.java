@@ -38,6 +38,10 @@ public class Player extends Renderable {
     }
 
     public void update() {
+        if (playerHitBox != null) {
+            CollisionObserver.getInstance().removeHitBox(playerHitBox);
+            playerHitBox = null;
+        }
         boolean left = Gdx.input.isKeyPressed(Input.Keys.LEFT);
         boolean right = Gdx.input.isKeyPressed(Input.Keys.RIGHT);
         boolean up = Gdx.input.isKeyPressed(Input.Keys.UP);
@@ -64,6 +68,13 @@ public class Player extends Renderable {
         }
 
         if (attack && !this.attacking) {
+            this.playerHitBox = (HitBox) BoxFactory.createBox(
+                    "hitbox",
+                    this,
+                    this.getX()+ (float) this.getWidth() /2,
+                    this.getY(),
+                    this.getWidth(),
+                    this.getHeight());
             this.attackCounter = 0;
             IdentifiableTexture attackTexture = new IdentifiableTexture(TextureType.Player, "player_swing.png");
             this.setTexture(attackTexture);

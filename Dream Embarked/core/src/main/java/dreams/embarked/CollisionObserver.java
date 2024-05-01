@@ -28,6 +28,7 @@ public class CollisionObserver {
     public void clearHurtBox(){
         hurtBoxes.clear();
     }
+    public void removeHitBox(HitBox hitbox) { hitBoxes.remove(hitbox); }
 
 
     public void detectCollisions() {

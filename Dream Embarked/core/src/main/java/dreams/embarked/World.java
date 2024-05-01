@@ -36,15 +36,17 @@ public class World {
 
         this.camera = new OrthographicCamera();
         this.camera.setToOrtho(false, 640, 360);
-
-        BoxFactory.createBox("hitbox", null, 320 - 60, 100, 20, 20);
     }
 
     public void update() {
         player.update();
         collisionObserver.detectCollisions();
         for (Enemy enemy : enemies) {
-            enemy.update();
+            if (enemy.isDead()) {
+                enemies.remove(enemy);
+            } else {
+                enemy.update();
+            }
         }
         printCurrentTile();
 

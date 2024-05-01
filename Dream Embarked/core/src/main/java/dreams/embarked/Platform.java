@@ -44,6 +44,9 @@ public class Platform extends ApplicationAdapter {
                 .createTileMap(20, 12)
                 .createPlayer(320 - 16, 100)
                 .addEnemy(180,200)
+                .addEnemy(120,150)
+                .addEnemy(240,50)
+                .addEnemy(190,300)
                 .populateTilesFromMatrix(backgroundMatrix)
                 .build();
         this.world = world;
