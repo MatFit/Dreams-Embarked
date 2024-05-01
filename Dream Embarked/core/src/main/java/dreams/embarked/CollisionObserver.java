@@ -31,16 +31,17 @@ public class CollisionObserver {
 
 
     public void detectCollisions() {
+        this.hasCollided = false;
         for (HitBox hitBox : hitBoxes) {
             for (HurtBox hurtBox : hurtBoxes) {
-                if (hitBox.overlaps(hurtBox)) {
+                if (hitBox.overlaps(hurtBox) && hitBox.getOwner() != hurtBox.getOwner()) {
                     hitBox.notifyCollision(hurtBox);
-                    hasCollided = true;
+                    this.hasCollided = true;
                 }
             }
         }
     }
     public int getHitBoxesSize(){ return hitBoxes.size(); }
     public int getHurtBoxesSize(){ return hurtBoxes.size(); }
-    public boolean getHasCollided(){ return hasCollided; }
+    public boolean getHasCollided(){ return this.hasCollided; }
 }
