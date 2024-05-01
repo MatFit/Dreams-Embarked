@@ -43,6 +43,9 @@ public class World {
     public void update() {
         player.update();
         collisionObserver.detectCollisions();
+        for (Enemy enemy : enemies) {
+            enemy.update();
+        }
         printCurrentTile();
 
         if (player.isDead()){
@@ -66,7 +69,12 @@ public class World {
             }
         }
         // Enemies
-
+        for (Enemy enemy : enemies) {
+            batch.draw(enemy.getTexture(), enemy.getX(), enemy.getY(), enemy.getWidth(), enemy.getHeight());
+            for (Renderable child : enemy.getChildren()) {
+                batch.draw(child.getTexture(), child.getX(), child.getY(), child.getWidth(), child.getHeight());
+            }
+        }
         // Items
 
         // Player
@@ -110,6 +118,12 @@ public class World {
         public Builder createPlayer(int x, int y) {
             IdentifiableTexture img = new IdentifiableTexture(TextureType.Player,"beta player.png");
             player = Player.getInstance(img, x, y, 32, 32);
+            return this;
+        }
+
+        public Builder addEnemy(int x, int y) {
+            IdentifiableTexture img = new IdentifiableTexture(TextureType.Enemy,"goblin.png");
+            enemies.add(new Enemy(img, x, y, 32, 32));
             return this;
         }
 

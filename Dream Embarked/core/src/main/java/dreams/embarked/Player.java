@@ -14,7 +14,7 @@ public class Player extends Renderable {
     private int prevY;
     private HitBox playerHitBox;
     private HurtBox playerHurtBox;
-    private int playerHealth = 3;
+    private int health = 3;
     private boolean attacking = false;
     private boolean invincible = false;
     private int invincibleTime = 30;
@@ -26,8 +26,8 @@ public class Player extends Renderable {
 
     private Player(IdentifiableTexture texture, int playerX, int playerY, int width, int height) {
         super(texture, playerX, playerY, width, height);
-        defaultTexture = texture;
-        playerHurtBox = (HurtBox) BoxFactory.createBox("hurtbox", this, playerX, playerY, width, height);
+        this.defaultTexture = texture;
+        this.playerHurtBox = (HurtBox) BoxFactory.createBox("hurtbox", this, playerX, playerY, width, height);
     }
 
     public static synchronized Player getInstance(IdentifiableTexture texture, int playerX, int playerY, int width, int height) {
@@ -35,10 +35,6 @@ public class Player extends Renderable {
             instance = new Player(texture, playerX, playerY, width, height);
         }
         return instance;
-    }
-
-    public static synchronized void resetPlayer() {
-        instance = null;
     }
 
     public void update() {
@@ -90,18 +86,22 @@ public class Player extends Renderable {
 
         this.moveX(xSpeed);
         this.moveY(ySpeed);
-        playerHurtBox.setPosition(this.getX(), this.getY());
-        System.out.println(this.playerHealth);
+        playerHurtBox.setPosition(this.getX(), this.getY()- (float) this.getHeight()/2);
+        System.out.println(this.health);
     }
     public void hasBeenDamaged(){
-        if (!invincible) {
-            playerHealth--;
-            invincible = true;
-            invincibleCounter = 0;
+        if (!this.invincible) {
+            this.health--;
+            this.invincible = true;
+            this.invincibleCounter = 0;
         }
     }
 
+    public void disableInvincibility() {
+        this.invincible = false;
+    }
+
     public boolean isDead() {
-        return playerHealth <= 0;
+        return this.health <= 0;
     }
 }

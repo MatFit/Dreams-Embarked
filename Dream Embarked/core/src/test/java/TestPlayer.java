@@ -39,4 +39,16 @@ public class TestPlayer {
         assertEquals(0, player.getX());
         assertEquals(0, player.getY());
     }
+
+    @Test
+    public void testPlayerDeath() {
+        player.hasBeenDamaged();
+        player.disableInvincibility();
+        player.hasBeenDamaged();
+        player.disableInvincibility();
+        player.hasBeenDamaged();
+        player.disableInvincibility();
+
+        assertTrue(player.isDead());
+    }
 }

@@ -5,4 +5,5 @@ public enum TextureType {
     Dirt,
     Stone,
     Player,
+    Enemy,
 }

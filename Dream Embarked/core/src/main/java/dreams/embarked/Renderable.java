@@ -48,4 +48,7 @@ public class Renderable {
     public void setTexture(IdentifiableTexture texture) {
         this.texture = texture;
     }
+
+    protected void update() {
+    }
 }
